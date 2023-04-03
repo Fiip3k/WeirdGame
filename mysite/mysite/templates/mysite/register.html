@@ -1,0 +1,26 @@
+{% extends "mysite/basebox.html" %}
+{% block title %} Register {% endblock %}
+
+{% block content %}
+<div class="center">
+<form method="post">
+    {% csrf_token %}
+    
+        <label>Username:</label>
+        <input type="text" name="username" />
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password" />
+        <br>
+        <label>email:</label>
+        <input type="email" name="email" />
+        <br>
+        <div class="center-button">
+            <input type="submit" value="Register" />
+            <button type="button" onclick="window.location.href='/login'">Login</button>
+        </div>
+        {{ error }}
+   
+</form>
+</div>
+{% endblock %}
