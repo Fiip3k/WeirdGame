@@ -1,3 +1,8 @@
+{% extends "game/main.html" %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
 <h1>Home</h1>
 {% if request.user.is_authenticated %}
 {{ message }}
@@ -9,5 +14,8 @@
 <br>
 <br>
 <br>
-<a href="http://192.168.0.192:8000/character">Character</a>
+
+<!-- <a href="http://192.168.0.192:8000/character">Character</a> -->
 {% endif %}
+
+{% endblock %}
