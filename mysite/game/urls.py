@@ -8,9 +8,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from game.views import home_view, character_view
+from game.views import *
 
 urlpatterns = [
     path('home/', home_view, name='home'),
     path('character/', character_view, name='character'),
+    path('fight/', fight_view, name='fight'),
+    path('healer/', healer_view, name='healer'),
 ]

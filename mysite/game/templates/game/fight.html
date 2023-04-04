@@ -1,0 +1,29 @@
+{% extends "game/main.html" %}
+{% block title %} Fight {% endblock %}
+
+{% block content %}
+
+<h1 class="content-title">Fight</h1>
+<div class="center">
+    <div style="display: flex; flex-direction: column;">
+        {{log}}
+    </div>
+    <div style="display: flex; flex-direction: column;">
+        {% for monster in monsters %}
+        <div class="monster-frame">
+            <ul>
+                <li>Name: {{monster.name}}</li>
+                <li>Health: {{monster.currentHealth}}/{{monster.maxHealth}}</li>
+                <li>Damage: {{monster.damage}}</li>
+            </ul>
+            <form class="center-button" action="{% url 'fight' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="monster_id" value="{{ monster.id }}">
+                <input type="submit" value="Fight">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

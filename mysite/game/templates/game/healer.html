@@ -1,0 +1,23 @@
+{% extends "game/main.html" %}
+{% block title %} Healer {% endblock %}
+
+{% block content %}
+
+<h1 class="content-title">Healer</h1>
+<div class="center">
+    <div>
+        {% for content in message %}
+        {{content}}
+        {% endfor %}
+    </div>
+    <div>
+        <p>Heal</p>
+        <form class="center-button" action="{% url 'healer' %}" method="post">
+            {% csrf_token %}
+            <!-- <input type="hidden" name="monster_id" value="{{ monster.id }}"> -->
+            <input type="submit" value="Heal">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

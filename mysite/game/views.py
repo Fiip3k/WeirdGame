@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from game.models import Character
+from game.models import Character, Monster
+from django.template.loader import render_to_string
 
 
 def home_view(request):
@@ -10,5 +11,38 @@ def home_view(request):
 
 
 def character_view(request):
+    if not (request.user.is_authenticated):
+        return redirect("login")
+
     character = Character.objects.get(user=request.user)
-    return render(request, 'game/character.html', {'name': character.name, 'max_health': character.max_health, 'current_health': character.current_health, 'damage': character.damage})
+    return render(request, 'game/character.html', {'name': character.name, 'maxHealth': character.maxHealth, 'currentHealth': character.currentHealth, 'damage': character.damage})
+
+
+def fight_view(request):
+    if not (request.user.is_authenticated):
+        return redirect("login")
+
+    monsters = Monster.objects.all()
+
+    if(request.method == 'POST'):
+        monster_id = request.POST['monster_id']
+        monster = Monster.objects.get(id=monster_id)
+        character = Character.objects.get(user=request.user)
+        log = character.fight(monster)
+        character.save()
+        renderedLog = render_to_string('game/fightlog.html', {'message': log})
+        return render(request, 'game/fight.html', {'monsters': monsters, 'log': renderedLog})
+
+    return render(request, 'game/fight.html', {'monsters': monsters})
+
+
+def healer_view(request):
+    if not (request.user.is_authenticated):
+        return redirect("login")
+
+    if(request.method == 'POST'):
+        character = Character.objects.get(user=request.user)
+        message = character.heal()
+        return render(request, 'game/healer.html', {'message': message})
+
+    return render(request, 'game/healer.html')

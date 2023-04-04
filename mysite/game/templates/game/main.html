@@ -13,27 +13,35 @@
     <body>
         <div class="header">
             <div class="header-buttons">
-                <a href="http://192.168.0.192:8000/home">
+                <a href="/home">
                     <div class="header-button">Home</div>
                 </a>
-                <a href="http://192.168.0.192:8000/character">
+                <a href="/character">
                     <div class="header-button">Character</div>
                 </a>
 
-                <div class="header-button">Fight</div>
+                <a href="/fight">
+                    <div class="header-button">Fight</div>
+                </a>
+
+                <a href="/healer">
+                    <div class="header-button">Healer</div>
+                </a>
             </div>
+        </div>
+
+
+
+        <div class="footer">
+            <h1 style="position:absolute;bottom:0;right:5%;">
+                Such Footer, wow
+            </h1>
         </div>
 
         <div class="container">
 
             {% block content %}{% endblock %}
 
-        </div>
-
-        <div class="footer">
-            <h1>
-                Such Footer, wow
-            </h1>
         </div>
     </body>
 

@@ -32,7 +32,7 @@ def register_view(request):
             try:
                 user = User.objects.create_user(username, email, password)
                 character = Character(
-                    name=username, max_health=100, current_health=100, damage=10, user=user)
+                    name=username, maxHealth=100, currentHealth=100, damage=10, user=user)
                 user.save()
                 character.save()
                 return redirect('home')

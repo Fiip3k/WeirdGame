@@ -3,19 +3,11 @@
 
 {% block content %}
 
-<h1>Home</h1>
-{% if request.user.is_authenticated %}
+<h1 class="content-title">Home</h1>
 {{ message }}
 <form method="POST" action="/logout/">
     {% csrf_token %}
     <button type="submit">Log Out</button>
 </form>
-<br>
-<br>
-<br>
-<br>
-
-<!-- <a href="http://192.168.0.192:8000/character">Character</a> -->
-{% endif %}
 
 {% endblock %}

@@ -1,20 +1,15 @@
 {% extends "game/main.html" %}
-{% block title %} Home {% endblock %}
+{% block title %} Character {% endblock %}
 
 {% block content %}
 
-<h1>Character</h1>
-<!-- <a href="http://192.168.0.192:8000/home">Home</a> -->
-<!-- <a href="http://192.168.0.192:8000/character">Character</a> -->
-{% if request.user.is_authenticated %}
-{{ message }}
+<h1 class="content-title">Character</h1>
 <div class="center">
-    <div>Name: {{name}}</div>
-    <div>Health: {{current_health}}/{{max_health}}</div>
-    <div>Damage: {{damage}}</div>
+    <ul>
+        <li>Name: {{name}}</li>
+        <li>Health: {{currentHealth}}/{{maxHealth}}</li>
+        <li>Damage: {{damage}}</li>
+    </ul>
 </div>
-
-{% endif %}
-
 
 {% endblock %}
