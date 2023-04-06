@@ -15,7 +15,7 @@ def character_view(request):
         return redirect("login")
 
     character = Character.objects.get(user=request.user)
-    return render(request, 'game/character.html', {'name': character.name, 'maxHealth': character.maxHealth, 'currentHealth': character.currentHealth, 'damage': character.damage})
+    return render(request, 'game/character.html', {'character': character})
 
 
 def fight_view(request):

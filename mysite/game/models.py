@@ -61,6 +61,9 @@ class Character(Fighter):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
+    strength = models.IntegerField(default=0)
+    dexterity = models.IntegerField(default=0)
+    intelligence = models.IntegerField(default=0)
 
     def fight(self, opponent: Fighter) -> list:
         # if self is dead, can't fight
