@@ -4,4 +4,4 @@ set -o errexit
 
 python -m pip install --upgrade pip
 pip install -r requirements.txt
-django-admin collectstatic --no-input
+python manage.py collectstatic --no-input
