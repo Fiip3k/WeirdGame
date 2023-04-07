@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'mysite',
 ]
 
-if RENDER_EXTERNAL_HOSTNAME:
-    INSTALLED_APPS.append('render.apps.RenderConfig')
+# if RENDER_EXTERNAL_HOSTNAME:
+#    INSTALLED_APPS.append('render.apps.RenderConfig')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
