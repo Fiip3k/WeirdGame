@@ -21,13 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='12345')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
-# DEBUG = False
+# DEBUG = 'RENDER' not in os.environ
+DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.0.192']
+ALLOWED_HOSTS = ['192.168.0.192',
+                 '192.168.0.16']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -40,7 +41,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static/'
 STATICFILES_DIRS = [
-
+    
 ]
 
 # Application definition
@@ -95,11 +96,25 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': os.environ.get('DATABASE_NAME')
+
+        'USER': os.environ.get('DATABASE_NAME')
+
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD')
+
+        'HOST': os.environ.get('DATABASE_HOST')
+
+        'PORT': '',
+
     }
+
 }
+
 
 
 # Password validation
