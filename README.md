@@ -7,3 +7,6 @@ Weird instructions for localhost run (anyone needs them?):
 2. Go into the main folder and run command "python manage.py runserver 0.0.0.0:8000" to start on localhost with 8000 port.
 3. On the main page you can choose to register and login.
 4. After logging in your character is created with the name == login.
+
+OR JUST FOLLOW THE **[LINK](https://weirdgame.onrender.com/)** (why did I not start with this?)
+Anyways if it's not working it means I messed something up. In this case only hire me at your own risk.
