@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from mysite.views import register_view, login_view, logout_view, reset_password, new_password
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +28,4 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('reset/', reset_password, name='reset_password'),
     path('new_password/', new_password, name='new_password'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
