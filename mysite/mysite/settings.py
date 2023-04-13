@@ -24,8 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='12345')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = 'RENDER' not in os.environ
-DEBUG = False
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['192.168.0.192',
                  '192.168.0.16']
@@ -40,9 +39,11 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static/'
-STATICFILES_DIRS = [
-    
-]
+STATICFILES_DIRS = []
+
+if DEBUG:
+    STATIC_ROOT = ''
+    STATICFILES_DIRS.append(BASE_DIR / 'static/')
 
 # Application definition
 
@@ -114,7 +115,6 @@ DATABASES = {
     }
 
 }
-
 
 
 # Password validation

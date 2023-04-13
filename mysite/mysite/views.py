@@ -8,6 +8,8 @@ from game.models import Character
 
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == 'POST':
         username = escape(request.POST['username'])
         password = escape(request.POST['password'])
@@ -22,6 +24,8 @@ def login_view(request):
 
 
 def register_view(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == 'POST':
         username = escape(request.POST['username'])
         password = escape(request.POST['password'])
@@ -50,6 +54,8 @@ def logout_view(request):
 
 
 def reset_password(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     # DOESN'T WORK CAUSE EMAIL NOT CONFIGURED
     if request.method == 'POST':
         email = request.POST.get('email', None)
