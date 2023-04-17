@@ -13,3 +13,5 @@ Weird instructions for localhost run (anyone needs them?):
 OR JUST FOLLOW THE **[LINK](https://weirdgame.onrender.com/)** (why did I not start with this?)
 Both Postgresql and Django servers are free, so they go down if not used for a while. If the site isn't loading instantly, it's probably because the server is starting.
 Anyways if it's not working it means I messed something up. In this case only hire me at your own risk.
+
+This is my Text!
