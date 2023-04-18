@@ -46,13 +46,13 @@ h1 {
     min-height: 32px;
     font-size: 22px;
     padding: 5px;
-    outline: solid 1px #E61933;
+    outline: solid 1px #4ce619;
 }
 
 .container {
     font-family: arial;
     font-size: 24px;
-    color: #E61933;
+    color: #d97109;
 
     overflow-y: auto;
     margin-top: 150px;
