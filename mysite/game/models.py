@@ -64,8 +64,11 @@ class Character(Fighter):
     strength = models.IntegerField(default=0)
     dexterity = models.IntegerField(default=0)
     intelligence = models.IntegerField(default=0)
+    pointsToSpend = models.IntegerField(default=0)
+    experience = models.IntegerField(default=0)
+    level = models.IntegerField(default=1)
 
-    def fight(self, opponent: Fighter) -> list:
+    def fight(self, opponent: Fighter) -> (list, bool):
         # if self is dead, can't fight
         if (self.isDead):
             return ["You are dead."]
@@ -79,8 +82,27 @@ class Character(Fighter):
                 log.extend(opponent.hit(self))
             else:
                 break
-        return log
+        
+        win = True
+        if(self.isDead): win = False
+        return log, win
+    
+    def increaseExperience(self, experience: int) -> None:
+        startingExperience = 100
+        experienceRequired = startingExperience * (1.5 ** (self.level - 1))
+        self.experience += experience
+        leveled = True
+        while(leveled):
+            if(self.experience >= experienceRequired):
+                # level up
+                self.level += 1
+                self.pointsToSpend += 10
+                experienceRequired = startingExperience * (1.5 ** (self.level - 1))
+            else:
+                leveled = False
+        self.save()
 
 
 class Monster(Fighter):
-    pass
+    experienceReward = models.IntegerField(default=0)
+    goldReward = models.IntegerField(default=0)

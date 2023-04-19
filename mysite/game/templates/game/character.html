@@ -6,6 +6,9 @@
 <h1 class="content-title">Character</h1>
 <div class="center">
     <ul>
+        <li>Level: {{character.level}}</li>
+        <li>Experience: {{character.experience}}</li>
+        <br>
         <li>Name: {{character.name}}</li>
         <li>Health: {{character.currentHealth}}/{{character.maxHealth}}</li>
         <li>Damage: {{character.damage}}</li>
@@ -13,7 +16,25 @@
         <li>Strength: {{character.strength}}</li>
         <li>Dexterity: {{character.dexterity}}</li>
         <li>Intelligence: {{character.intelligence}}</li>
+        <br>
+        <li>Points to spend: {{character.pointsToSpend}}</li>
     </ul>
+
+    <form action="/character/" method="post">
+         {% csrf_token %}
+      <label for="strengthIncrease">+Strength:</label>
+      <input type="number" id="strengthIncrease" name="strengthIncrease" min="0" value="0"><br>
+
+      <label for="dexterityIncrease">+Dexterity:</label>
+      <input type="number" id="dexterityIncrease" name="dexterityIncrease" min="0" value="0"><br>
+
+      <label for="intelligenceIncrease">+Intelligence:</label>
+      <input type="number" id="intelligenceIncrease" name="intelligenceIncrease" min="0" value="0"><br>
+
+      <input type="submit" value="Submit">
+    </form>
+    {{error}}
+
 </div>
 
 {% endblock %}

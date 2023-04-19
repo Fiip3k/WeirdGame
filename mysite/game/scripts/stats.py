@@ -1,5 +1,5 @@
 from enum import Enum
-from models import Character
+from game.models import Character
 
 
 class Statistic(Enum):

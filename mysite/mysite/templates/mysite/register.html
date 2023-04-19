@@ -3,6 +3,7 @@
 
 {% block content %}
 <div class="center">
+<h1>Register</h1>
 <form method="post">
     {% csrf_token %}
     
@@ -16,8 +17,8 @@
         <input type="email" name="email" />
         <br>
         <div class="center-button">
-            <input type="submit" value="Register" />
-            <button type="button" onclick="window.location.href='/login'">Login</button>
+            <input type="submit" value="Create Account" />
+            <button type="button" onclick="window.location.href='/login'">Go to Login</button>
         </div>
         {{ error }}
    

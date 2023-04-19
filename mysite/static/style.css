@@ -52,7 +52,7 @@ h1 {
 .container {
     font-family: arial;
     font-size: 24px;
-    color: #d97109;
+    color: red;
 
     overflow-y: auto;
     margin-top: 150px;
@@ -62,8 +62,8 @@ h1 {
     min-height: auto;
     padding: 20px;
 
-    background-color: #dd8b58;
-    outline: solid 5px #801233;
+    background-color: lightgreen;
+    outline: solid 5px darkgreen;
 }
 
 .monster-frame {
