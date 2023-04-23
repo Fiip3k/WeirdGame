@@ -49,6 +49,19 @@ h1 {
     outline: solid 1px #4ce619;
 }
 
+.character-container {
+    font-family: arial;
+    font-size: 24px;
+    color: red;
+    text-align: center;
+
+    margin-left: 5%;
+    position: fixed;
+    width: 20%;
+    outline: solid 5px darkgreen;
+    background-color: lightgreen;
+}
+
 .container {
     font-family: arial;
     font-size: 24px;
@@ -57,8 +70,8 @@ h1 {
     overflow-y: auto;
     margin-top: 150px;
     margin-bottom: 150px;
-    width: 80%;
-    margin-left: 10%;
+    width: 60%;
+    margin-left: 30%;
     min-height: auto;
     padding: 20px;
 

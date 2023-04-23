@@ -68,7 +68,7 @@ class Character(Fighter):
     experience = models.IntegerField(default=0)
     level = models.IntegerField(default=1)
 
-    def fight(self, opponent: Fighter) -> (list, bool):
+    def fight(self, opponent: Fighter) -> tuple[list, bool]:
         # if self is dead, can't fight
         if (self.isDead):
             return ["You are dead."]
@@ -82,11 +82,12 @@ class Character(Fighter):
                 log.extend(opponent.hit(self))
             else:
                 break
-        
+
         win = True
-        if(self.isDead): win = False
-        return log, win
-    
+        if(self.isDead):
+            win = False
+        return (log, win)
+
     def increaseExperience(self, experience: int) -> None:
         startingExperience = 100
         experienceRequired = startingExperience * (1.5 ** (self.level - 1))
@@ -97,7 +98,8 @@ class Character(Fighter):
                 # level up
                 self.level += 1
                 self.pointsToSpend += 10
-                experienceRequired = startingExperience * (1.5 ** (self.level - 1))
+                experienceRequired = startingExperience * \
+                    (1.5 ** (self.level - 1))
             else:
                 leveled = False
         self.save()

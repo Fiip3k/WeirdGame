@@ -7,14 +7,19 @@ from django.template.loader import render_to_string
 def home_view(request):
     if not (request.user.is_authenticated):
         return redirect("login")
-    username = request.user.username
-    return render(request, 'game/home.html', {'message': 'Logged in as: ' + username})
+
+    character = Character.objects.get(user=request.user)
+    message = dict()
+    message['character'] = character
+    message['message'] = 'Logged in as: ' + request.user.username
+
+    return render(request, 'game/home.html', message)
 
 
 def character_view(request):
     if not (request.user.is_authenticated):
         return redirect("login")
-    
+
     character = Character.objects.get(user=request.user)
     message = dict()
     message['character'] = character
@@ -27,13 +32,13 @@ def character_view(request):
         if(character.pointsToSpend >= total):
             Statistics.increase(character, Statistic.Strength, strength)
             Statistics.increase(character, Statistic.Dexterity, dexterity)
-            Statistics.increase(character, Statistic.Intelligence, intelligence)
+            Statistics.increase(
+                character, Statistic.Intelligence, intelligence)
             character.pointsToSpend -= total
             character.save()
         else:
             message['error'] = "Not enough points to spend."
-            
-    
+
     return render(request, 'game/character.html', message)
 
 
@@ -41,29 +46,42 @@ def fight_view(request):
     if not (request.user.is_authenticated):
         return redirect("login")
 
-    monsters = Monster.objects.all()
+    character = Character.objects.get(user=request.user)
+    message = dict()
+    message['monsters'] = Monster.objects.all()  # TODO
+
+    for monster in message['monsters']:
+        monster.currentHealth *= character.level
+        monster.maxHealth *= character.level
+        monster.damage *= character.level
 
     if(request.method == 'POST'):
-        monster_id = request.POST['monster_id']
-        monster = Monster.objects.get(id=monster_id)
-        character = Character.objects.get(user=request.user)
-        log, win = character.fight(monster)
+        monster_id = int(request.POST['monster_id'])
+        target = [m for m in message['monsters'] if m.id == monster_id]
+        log, win = character.fight(target[0])
         if(win):
             character.increaseExperience(monster.experienceReward)
         character.save()
-        renderedLog = render_to_string('game/fightlog.html', {'message': log})
-        return render(request, 'game/fight.html', {'monsters': monsters, 'log': renderedLog})
-
-    return render(request, 'game/fight.html', {'monsters': monsters})
+        message['character'] = character
+        message['log'] = render_to_string(
+            'game/fightlog.html', {'message': log})
+        return render(request, 'game/fight.html', message)
+    message['character'] = character
+    return render(request, 'game/fight.html', message)
 
 
 def healer_view(request):
     if not (request.user.is_authenticated):
         return redirect("login")
 
+    character = Character.objects.get(user=request.user)
+    message = dict()
+    message['character'] = character
+
     if(request.method == 'POST'):
         character = Character.objects.get(user=request.user)
-        message = character.heal()
-        return render(request, 'game/healer.html', {'message': message})
+        message['message'] = character.heal()
+        message['character'] = character
+        return render(request, 'game/healer.html', message)
 
-    return render(request, 'game/healer.html')
+    return render(request, 'game/healer.html', message)
