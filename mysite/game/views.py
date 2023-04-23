@@ -60,7 +60,7 @@ def fight_view(request):
         target = [m for m in message['monsters'] if m.id == monster_id]
         log, win = character.fight(target[0])
         if(win):
-            character.increaseExperience(monster.experienceReward)
+            character.increaseExperience(target[0].experienceReward)
         character.save()
         message['character'] = character
         message['log'] = render_to_string(

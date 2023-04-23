@@ -13,7 +13,7 @@
         <div class="monster-frame">
             <ul>
                 <li>Name: {{monster.name}}</li>
-                <li>Health: {{monster.currentHealth}}/{{monster.maxHealth}}</li>
+                <li>Health: {{monster.maxHealth}}</li>
                 <li>Damage: {{monster.damage}}</li>
             </ul>
             <form class="center-button" action="{% url 'fight' %}" method="post">
