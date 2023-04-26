@@ -88,13 +88,11 @@ a:active { text-decoration: none; }
 }
 
 .navbar_grid_item:hover {
-    background-color: rgb(241, 122, 10);
-    border: 3px solid rgb(241, 122, 10);
-}
-
-.navbar_grid_item:hover {
+    cursor: pointer;
     animation: nav_button_hover 3s infinite ease;
 }
+
+
 
 .navbar_grid_item:active {
     animation: nav_button_hover 0s infinite ease;
@@ -104,7 +102,7 @@ a:active { text-decoration: none; }
 
 @keyframes nav_button_hover {
     0% {background-color:rgb(241, 122, 10); border: 3px solid rgb(241, 122, 10);}
-    50% {background-color:rgb(241, 68, 10); border: 3px solid rgb(241, 68, 10);}
+    50% {background-color:rgb(192, 58, 14); border: 3px solid rgb(192, 58, 14);}
     100% {background-color:rgb(241, 122, 10); border: 3px solid rgb(241, 122, 10);}
 }
 
@@ -123,6 +121,7 @@ a:active { text-decoration: none; }
 
 .navbar_grid_inventory {
     grid-area: navbar_grid_inventory;
+    pointer-events: none;
 }
 
 .navbar_grid_healer {
@@ -131,6 +130,7 @@ a:active { text-decoration: none; }
 
 .navbar_grid_shop {
     grid-area: navbar_grid_shop;
+    pointer-events: none;
 }
 
 
@@ -144,7 +144,6 @@ a:active { text-decoration: none; }
     top: 0px;
     width: calc(100vw - var(--navbar_width));
     height: 100vh;
-    border: 2px solid red;
     box-sizing: border-box;
     
 }
@@ -162,6 +161,5 @@ a:active { text-decoration: none; }
     justify-content: center; 
     width: 100vw;
     height: 100vh;
-    border: 2px solid red;
     box-sizing: border-box;
 }
