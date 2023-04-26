@@ -11,45 +11,59 @@
     </head>
 
     <body>
-        <div class="header">
-            <div class="header-buttons">
+        <div class="navbar">
+            <div class="navbar_grid_group_01">
+                <a href="/character" class="navbar_grid_item navbar_grid_char">
+                    <p>Character</p>
+                </a>
+
+                <a href="/home" class="navbar_grid_item navbar_grid_home">
+                    <p>Home</p>
+                </a>
+
+                <a href="/fight" class="navbar_grid_item navbar_grid_fight">
+                    <p>Fight</p>
+                </a>
+
+                <a href="/healer" class="navbar_grid_item navbar_grid_healer">
+                    <p>Healer</p>
+                </a>
+
+                <a href="/shop" class="navbar_grid_item navbar_grid_shop">
+                    <p>Shop</p>
+                </a>
+
+                <a href="/inventory" class="navbar_grid_item navbar_grid_inventory">
+                    <p>Inventory</p>
+                </a>               
+            </div>
+            
+            <div class="navbar_grid_group_02 navbar_grid_item">
                 <a href="/home">
-                    <div class="header-button">Home</div>
-                </a>
-                <a href="/character">
-                    <div class="header-button">Character</div>
-                </a>
-
-                <a href="/fight">
-                    <div class="header-button">Fight</div>
-                </a>
-
-                <a href="/healer">
-                    <div class="header-button">Healer</div>
+                    <p>Home</p>
                 </a>
             </div>
+        
         </div>
 
 
 
-        <div class="footer">
-            <h1 style="position:absolute;bottom:0;right:5%;">
-                Such Footer, wow
-            </h1>
-        </div>
-
+        
+        <!--
         <div class="character-container">
             <h1>{{character.name}}</h1>
             <p>Level: {{character.level}}</p>
             <p>EXP: {{character.experience}}</p>
             <p>HP: {{character.currentHealth}}/{{character.maxHealth}}</p>
         </div>
+        -->
 
-        <div class="container">
-
+        <div class="container_main">
+            
             {% block content %}{% endblock %}
-
+            
         </div>
+    
     </body>
 
 </html>
