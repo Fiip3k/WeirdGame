@@ -6,6 +6,7 @@
     --navbar_width: 12rem;
     --navbar_background:rgb(19, 19, 20);
     --display_container_background:rgb(35, 35, 36);
+    --global_border_radius:.5rem;
 }
 
 body {
@@ -22,6 +23,10 @@ ___MAIN___
     _Navbar
 
     _Display Container
+
+    _Fight
+
+    _Character
 
 ___BASE___
 
@@ -83,21 +88,27 @@ a:active { text-decoration: none; }
     width: minmax(1fr, 1fr); 
     display: flex;
     align-items: center;
-    justify-content: center; 
-     
+    justify-content: center;
+    
+}
+
+.navbar_grid_item > svg {
+    width: calc(var(--navbar_width) * 0.15);
+    height: calc(var(--navbar_width) * 0.15);
+    fill: var(--navbar_background);
 }
 
 .navbar_grid_item:hover {
     cursor: pointer;
     animation: nav_button_hover 3s infinite ease;
+    transform: scale(105%);
 }
-
-
 
 .navbar_grid_item:active {
     animation: nav_button_hover 0s infinite ease;
     background-color: rgb(241, 68, 10);
     border: 3px solid rgb(241, 68, 10);
+    transform: scale(99%);
 }
 
 @keyframes nav_button_hover {
@@ -148,6 +159,9 @@ a:active { text-decoration: none; }
     
 }
 
+
+/******************FIGHT***********/
+
 .monster_collection {
     display: flex;
     flex-direction: row;
@@ -159,6 +173,20 @@ a:active { text-decoration: none; }
     padding: .5rem;
     border: 1px solid white;
 }
+
+
+/******************Character***********/
+
+.character_card {
+    padding: 1rem;
+    border-radius: var(--global_border_radius);
+    width: fit-content;
+    background-color: var(--navbar_background);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.523);
+}
+
+
+
 
 
 /*__________________________BASE__________________________*/
