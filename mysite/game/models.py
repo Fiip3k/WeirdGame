@@ -71,7 +71,7 @@ class Character(Fighter):
     def fight(self, opponent: Fighter) -> tuple[list, bool]:
         # if self is dead, can't fight
         if (self.isDead):
-            return ["You are dead."]
+            return (["You are dead."], False)
         log = []
         while(not self.isDead):
             # hit opponent
