@@ -8,9 +8,9 @@
     <div style="display: flex; flex-direction: column;">
         {{log}}
     </div>
-    <div style="display: flex; flex-direction: column;">
+    <div class="monster_collection">
         {% for monster in monsters %}
-        <div class="monster-frame">
+        <div class="monster_frame">
             <ul>
                 <li>Name: {{monster.name}}</li>
                 <li>Health: {{monster.maxHealth}}</li>
