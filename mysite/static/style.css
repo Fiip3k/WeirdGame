@@ -27,6 +27,8 @@ ___MAIN___
     _Fight
 
     _Character
+        _Character_Card
+        _Health_Bar
 
 ___BASE___
 
@@ -177,6 +179,8 @@ a:active { text-decoration: none; }
 
 /******************Character***********/
 
+/* Character_Card*/
+
 .character_card {
     padding: 1rem;
     border-radius: var(--global_border_radius);
@@ -185,14 +189,16 @@ a:active { text-decoration: none; }
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.523);
 }
 
+
+/* Health_Bar*/
+
 .char_health_bar {
     position: relative;
     border: 2px solid black;
     --health_bar_width: 100%;
     width: --health_bar_width;
     height: 1rem;
-    z-index: 1;
-    
+    z-index: 1;  
 }
 
 .char_health_bar::before { 
