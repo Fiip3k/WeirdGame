@@ -3,6 +3,11 @@
 
 {% block content %}
 
+<style>
+    :root {
+    --health_percentage: calc({{character.currentHealth}} / {{character.maxHealth}});
+    }
+</style>
 <h1 class="content-title">Character</h1>
 <div class="character_card">
     <ul>
@@ -10,7 +15,7 @@
         <li>Experience: {{character.experience}}</li>
         <br>
         <li>Name: {{character.name}}</li>
-        <li>Health: {{character.currentHealth}}/{{character.maxHealth}}</li>
+        <div data-health="{{character.currentHealth}}/{{character.maxHealth}}" class="char_health_bar"></div>
         <li>Damage: {{character.damage}}</li>
         <br>
         <li>Strength: {{character.strength}}</li>

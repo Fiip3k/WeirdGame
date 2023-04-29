@@ -185,6 +185,34 @@ a:active { text-decoration: none; }
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.523);
 }
 
+.char_health_bar {
+    position: relative;
+    border: 2px solid black;
+    --health_bar_width: 100%;
+    width: --health_bar_width;
+    height: 1rem;
+    z-index: 1;
+    
+}
+
+.char_health_bar::before { 
+    content: attr(data-health);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.char_health_bar::after {
+    content: ' ';
+    position: absolute;
+    top: 0px;   
+    background-color: red;
+    height: 1rem;
+    width: calc(var(--health_percentage) * 100 * 1%);
+    max-width: var(--health_bar_width);
+    z-index: -1;
+}
+
 
 
 
